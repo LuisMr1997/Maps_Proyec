@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="#F3F2F2">
+    <!-- Barra de búsqueda de lugares y sitios -->
+    <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Buscar un lugar o sitio"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Lista en la cual se mostrarán los lugares y sitios que el usuario pueda estar buscando-->
+  <ion-list [hidden]="autocompleteItems.lenght == 0">
+    <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+      {{ item.description }}
+    </ion-item>
+  </ion-list>
+
+  <div id="map"></div>
+</ion-content>
+
+<ion-footer style="background-color: #F3F2F2;">
+    <ion-grid>
+      <ion-row>
+      <ion-col style="text-align: center"><button class="geolocation-btn" ion-button round icon-start (click)="tryGeolocation()"><ion-icon name="ios-send"></ion-icon>Obtener mi ubicación</button></ion-col>
+      <ion-col style="text-align: center"><button class="geolocation-btn" ion-button round icon-start (click)="logoutSession()"><ion-icon name="ios-person"></ion-icon>Cerrar sesión</button></ion-col>
+      </ion-row>
+    </ion-grid>
+</ion-footer>
+
+

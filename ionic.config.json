@@ -1,0 +1,7 @@
+{
+  "name": "demo_maps",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

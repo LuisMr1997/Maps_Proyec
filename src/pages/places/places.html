@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-searchbar [(ngModel)]="autocomplete.input" (ionInput)="updateSearchResults()" placeholder="Buscar un lugar o sitio"></ion-searchbar>
+  </ion-toolbar>
+  <ion-navbar>
+    <ion-title>Places</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list [hidden]="autocompleteItems.length == 0">
+    <ion-item *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item)">
+      {{ item.description }}
+    </ion-item>
+  </ion-list>
+  <ion-grid *ngIf="nearbyItems.length == 0">
+    <ion-row>
+      <ion-col col-12>
+        <h4>Por favor ingresa un lugar de tu preferencia en la barra de busqueda.</h4>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list *ngFor="let place of nearbyItems">
+    <h2>{{ place.name }}</h2>
+    <p>{{ place.vicinity }}</p>
+    <p>Rating {{ place.rating }}</p>
+    <button ion-button clear item-end *ngIf="(place.opening_hours && !place.opening_hours_open.now)">Cerrado</button>
+    <button ion-button clear item-end *ngIf="(place.opening_hours && place.opening_hours.open_now)">Abierto ahora</button>
+  </ion-list>
+</ion-content>

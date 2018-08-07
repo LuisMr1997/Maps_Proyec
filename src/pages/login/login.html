@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Yavimaps</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding class="photo">
+  <ion-grid>
+    <div style="width:75%; text-align:center; align-content:center; align-self:center">
+      <img src="../../assets/imgs/restaurant_icon.png">
+    </div>
+    <ion-card>
+      <ion-card-header text-center>
+        <div>
+          Iniciar sesión
+        </div>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label floating color="#000000">Correo electrónico</ion-label>
+          <ion-input [(ngModel)]="user.email" name="email" type="text" autocapitalize="off" required></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label floating color="#000000">Contraseña</ion-label>
+          <ion-input [(ngModel)]="user.password" name="password" type="password" required></ion-input>
+        </ion-item>
+        <ion-grid>
+          <button color="primary" ion-button (click)="login()">Ingresar</button>
+        </ion-grid>
+        <ion-grid>
+          <button color="primary" ion-button (click)="signin()">Validar usuario</button>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-grid>
+</ion-content>
